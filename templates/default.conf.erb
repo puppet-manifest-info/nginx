@@ -1,7 +1,7 @@
 upstream project {
-  ip_hash;
-  server 192.168.59.103:2000;
-  server 192.168.59.103:4000;
+#  ip_hash;
+  server 192.168.59.103:2000 weights=15;
+  server 192.168.59.103:4000 weights=15;
 #  server 192.168.1.12:3000;
 #  server 10.20.28.141:3000;
 
