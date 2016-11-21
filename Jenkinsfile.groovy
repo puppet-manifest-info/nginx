@@ -4,7 +4,7 @@ node('puppet-master') {
         sh "ls -lart"
         stage ('SCM Checkout') { scm() }
         stage ('Syntax Validation') { syntax() }
-        stage ('Puppet Syntax Style Check ') { style() }
+        stage ('Puppet Style Check ') { style() }
         stage ('UnitTest') { unitTest() }
         stage ('AcceptanceTest') { acceptanceTest() }
         stage ( 'Deploy to Puppet-Master') { updateManifest() }
