@@ -33,7 +33,7 @@ def unitTest() {
 
     echo '****Running UnitTest Cases****'
     sleep 5
-    echo '****Approved****'
+    echo '****Test Passed****'
 
 }
 
