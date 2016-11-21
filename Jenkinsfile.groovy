@@ -24,7 +24,7 @@ def syntax() {
 def style() {
 
     echo '****Validation of Syntax****'
-    sh 'sleep 5'
+    sleep 5
     echo '****Approved Syntax as pep puppet manifest standard****'
 
 }
@@ -32,7 +32,7 @@ def style() {
 def unitTest() {
 
     echo '****Running UnitTest Cases****'
-    sh 'sleep 5'
+    sleep 5
     echo '****Approved****'
 
 }
