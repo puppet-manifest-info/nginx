@@ -5,8 +5,9 @@ node('puppet-master') {
         stage ('SCM Checkout') { scm() }
         stage ('Syntax Validation') { syntax() }
         stage ('Puppet Syntax Style Check ') { style() }
-        stage ('UnitTest & AcceptanceTest') { unitTest() }
-        stage ( 'Update the Manifest') { updateManifest() }
+        stage ('UnitTest') { unitTest() }
+        stage ('AcceptanceTest') { acceptanceTest() }
+        stage ( 'Deploy to Puppet-Master') { updateManifest() }
         step([$class: 'WsCleanup'])
     }
 }
@@ -24,7 +25,7 @@ def syntax() {
 def style() {
 
     echo '****Validation of Syntax****'
-    sleep 5
+    sleep 2
     echo '****Approved Syntax as pep puppet manifest standard****'
 
 }
@@ -32,7 +33,14 @@ def style() {
 def unitTest() {
 
     echo '****Running UnitTest Cases****'
-    sleep 5
+    sleep 2
+    echo '****Test Passed****'
+
+}
+def acceptanceTest() {
+
+    echo '****Running Acceptance Cases****'
+    sleep 2
     echo '****Test Passed****'
 
 }
