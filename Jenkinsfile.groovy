@@ -3,10 +3,10 @@ node('puppet-master') {
         step([$class: 'WsCleanup'])
         sh "ls -lart"
         stage ('SCM Checkout') { scm() }
-        stage ('Syntax validation') { syntax() }
-        stage ('Syntax Style check ') { style() }
-        stage ('UnitTest & Acceptance Test') { unitTest() }
-        stage ( 'Update the manifest') { updateManifest() }
+        stage ('Syntax Validation') { syntax() }
+        stage ('Puppet Syntax Style Check ') { style() }
+        stage ('UnitTest & AcceptanceTest') { unitTest() }
+        stage ( 'Update the Manifest') { updateManifest() }
         step([$class: 'WsCleanup'])
     }
 }
