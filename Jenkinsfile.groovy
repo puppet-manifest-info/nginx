@@ -7,7 +7,8 @@ node('puppet-master') {
         stage ('Puppet Style Check ') { style() }
         stage ('UnitTest') { unitTest() }
         stage ('AcceptanceTest') { acceptanceTest() }
-        stage ( 'Deploy to Puppet-Master') { updateManifest() }
+        stage ('Deploy to Puppet-Master') { updateManifest() }
+        step ('Deploy Catalog') { deploycatalog() }
         step([$class: 'WsCleanup'])
     }
 }
@@ -50,3 +51,10 @@ def updateManifest() {
     sh 'echo jenkins | sudo -S cp -rf templates /etc/puppet/modules/nginx/'
     sh 'echo jenkins | sudo -S cp -rf manifests /etc/puppet/modules/nginx/ && echo jenkins | sudo -S chown -R root:root /etc/puppet/modules/nginx'
 }
+
+def deploycatalog() {
+    node('nginx-load-balancer') {
+        sh 'echo jenkins | sudo -S puppet agent -t'
+    }
+    
+}    
